@@ -41,12 +41,9 @@
     justify-content:center;
     background:#EDE6D5 url('assets/envelope-poster.jpg') center/cover no-repeat;
     cursor:pointer;
-    transition:opacity 0.9s ease, visibility 0.9s ease;
   }
   #envelope-screen.hidden{
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
+    display:none;
   }
   #envelope-video{
     width:100%;
@@ -172,6 +169,8 @@
     bottom:40px;
     left:50%;
     transform:translateX(-50%);
+    opacity:1;
+    animation:bob 2.4s ease-in-out infinite;
   }
   @keyframes bob{
     0%,100%{transform:translateY(0);}
@@ -180,15 +179,16 @@
 
   /* --- Countdown --- */
   #countdown{
-    background:linear-gradient(180deg, var(--sage) 0%, var(--sage-deep) 100%);
-    color:var(--cream);
+    background:var(--beige);
+    color:var(--sage-dark);
   }
-  #countdown .eyebrow{color:var(--gold-light); opacity:1;}
+  #countdown .eyebrow{color:var(--gold); opacity:1;}
   .cd-title{
     font-family:'Cormorant Garamond', serif;
     font-size:24px;
     margin:14px 0 34px;
     opacity:1;
+    color:var(--sage-dark);
   }
   .cd-grid{
     display:flex;
@@ -197,8 +197,8 @@
     justify-content:center;
   }
   .cd-box{
-    background:rgba(255,255,255,0.12);
-    border:1px solid rgba(255,255,255,0.25);
+    background:rgba(255,255,255,0.5);
+    border:1px solid rgba(140,160,132,0.35);
     border-radius:6px;
     padding:18px 16px;
     min-width:76px;
@@ -207,7 +207,7 @@
     font-family:'Cormorant Garamond', serif;
     font-size:34px;
     font-weight:600;
-    color:var(--gold-light);
+    color:var(--sage-dark);
   }
   .cd-label{
     font-size:10px;
@@ -219,7 +219,8 @@
 
   /* --- Details / map --- */
   #details{
-    background:var(--beige);
+    background:#6A6D5A;
+    color:var(--cream);
   }
   .detail-block{
     margin-bottom:34px;
@@ -228,18 +229,18 @@
     font-size:11px;
     letter-spacing:0.22em;
     text-transform:uppercase;
-    color:var(--gold);
+    color:var(--gold-light);
     margin-bottom:8px;
   }
   .detail-main{
     font-family:'Cormorant Garamond', serif;
     font-size:26px;
     font-weight:600;
-    color:var(--sage-dark);
+    color:var(--cream);
     outline:none;
   }
   .detail-main[contenteditable]:focus{
-    background:rgba(140,160,132,0.14);
+    background:rgba(255,255,255,0.14);
     border-radius:4px;
   }
   .map-btn{
@@ -247,8 +248,8 @@
     display:inline-flex;
     align-items:center;
     gap:8px;
-    background:var(--sage-dark);
-    color:var(--cream);
+    background:var(--gold);
+    color:var(--sage-dark);
     text-decoration:none;
     font-size:13px;
     letter-spacing:0.05em;
@@ -257,7 +258,7 @@
     transition:transform 0.25s ease, background 0.25s ease;
   }
   .map-btn:hover{
-    background:var(--sage-deep);
+    background:var(--gold-light);
     transform:translateY(-2px);
   }
   .map-btn svg{width:15px; height:15px;}
@@ -401,11 +402,9 @@
   });
 
   video.addEventListener('ended', () => {
-    setTimeout(() => {
-      envScreen.classList.add('hidden');
-      body.classList.remove('locked');
-      document.getElementById('hero').scrollIntoView({behavior:'smooth'});
-    }, 300);
+    envScreen.classList.add('hidden');
+    body.classList.remove('locked');
+    document.getElementById('hero').scrollIntoView({behavior:'auto'});
   });
 
   // Countdown to 12 Dec 2026, 14:00 local time
