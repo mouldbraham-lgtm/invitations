@@ -3,19 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#FAF1E1">
 <title>Melissa &amp; Badr Eddine — Mariage</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:ital,wght@0,400;0,500&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
   :root{
     --page-bg:#FAF1E1;
     --ink:#565B4A;
+    color-scheme:light only;
   }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
+  *{box-sizing:border-box; margin:0; padding:0; forced-color-adjust:none;}
+  html{scroll-behavior:smooth; color-scheme:light only; background:#000;}
   body{
     background:#000;
     overflow-x:hidden;
+    color-scheme:light only;
   }
   body.locked{overflow:hidden; height:100vh;}
   @media (prefers-reduced-motion: reduce){
@@ -58,7 +62,108 @@
   #envelope-screen.playing .tap-hint{ display:none; }
   @keyframes pulse{ 0%,100%{opacity:0.5;} 50%{opacity:1;} }
 
-  /* ================= FIXED-CANVAS PAGES (each artboard = 1080x1920) ================= */
+  /* --- Page 1: invitation text — scales to always fit one full screen,
+       on any phone, using height-based container query units (cqh) so
+       nothing is ever cropped or requires scrolling to see. --- */
+  #hero{
+    position:relative;
+    width:100%;
+    height:100dvh;
+    background:#565B4A;
+    color:#FAF1E1;
+    overflow:hidden;
+    container-type:size;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .invite-text{
+    width:100%;
+    padding:0 8%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+  .invite-text p, .invite-text div{ margin:0; }
+  .invite-line1{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:400;
+    font-size:1.4063cqh;
+    letter-spacing:0.02em;
+    margin-bottom:5.7292cqh;
+  }
+  .invite-line2{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:300;
+    font-size:1.5104cqh;
+    line-height:1.4;
+    margin-bottom:6.7708cqh;
+  }
+  .invite-name{
+    font-family:'Pinyon Script', cursive;
+    font-weight:400;
+    font-size:min(5.2083cqh, 17cqi);
+    line-height:1.15;
+    margin-bottom:1.0417cqh;
+  }
+  .invite-avec{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:400;
+    font-size:1.4583cqh;
+    letter-spacing:0.03em;
+    margin-bottom:1.0417cqh;
+  }
+  .invite-name.groom{
+    margin-bottom:5.7292cqh;
+    margin-top:0;
+  }
+  .invite-line3{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:400;
+    font-style:italic;
+    font-size:1.3542cqh;
+    margin-bottom:3.6458cqh;
+  }
+  .invite-date{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size:min(2.1875cqh, 8cqi);
+    margin-bottom:3.6458cqh;
+  }
+  .invite-time{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:400;
+    font-size:1.4583cqh;
+    margin-bottom:4.6875cqh;
+  }
+  .invite-venue{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size:1.5625cqh;
+    margin-bottom:0.3125cqh;
+  }
+  .invite-city{
+    font-family:'Montserrat', sans-serif;
+    font-weight:400;
+    font-size:1.1458cqh;
+    letter-spacing:0.02em;
+  }
+  .scroll-cue{
+    position:absolute;
+    left:50%;
+    bottom:2.5%;
+    transform:translateX(-50%);
+    color:#D6BD8C;
+    text-shadow:0 2px 8px rgba(0,0,0,0.35);
+    font-size:11px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    font-family:'Montserrat', sans-serif;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+
+  /* ================= FIXED-CANVAS PAGE (map artboard = 1080x1920) ================= */
   .page{
     position:relative;
     width:100%;
@@ -67,24 +172,6 @@
     margin:0 auto;
     overflow:hidden;
     container-type:inline-size;
-  }
-
-  /* --- Page 1: static reveal frame (matches the video's final frame) --- */
-  #hero{
-    background:#5C6650 url('assets/invite-reveal.jpg') center/cover no-repeat;
-  }
-  .scroll-cue{
-    position:absolute;
-    left:50%;
-    bottom:5%;
-    transform:translateX(-50%);
-    color:#D6BD8C;
-    text-shadow:0 2px 8px rgba(0,0,0,0.35);
-    font-size:2.2cqw;
-    letter-spacing:0.2em;
-    text-transform:uppercase;
-    font-family:'Montserrat', sans-serif;
-    animation:bob 2.4s ease-in-out infinite;
   }
   @keyframes bob{
     0%,100%{transform:translateX(-50%) translateY(0);}
@@ -167,7 +254,7 @@
 </div>
 
 <!-- ===================== PAGE 1 : HERO / INVITATION REVEAL ===================== -->
-<section class="page" id="hero">
+<section id="hero">
   <div class="scroll-cue">Faites défiler ↓</div>
 </section>
 
