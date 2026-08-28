@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Melissa &amp; Badr Eddine — Mariage</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&family=Montserrat:wght@500&display=swap" rel="stylesheet">
 <style>
   :root{
     --sage:#8CA084;
@@ -172,6 +172,31 @@
     opacity:1;
     animation:bob 2.4s ease-in-out infinite;
   }
+
+  /* --- Map page (static image with positioned link) --- */
+  #map-page{
+    background:#F3ECDF url('assets/map-page.jpg') center/cover no-repeat;
+    min-height:100vh;
+    padding:0;
+  }
+  #maps-link{
+    position:absolute;
+    left:10%;
+    top:36.7188%;
+    transform:translate(0,-50%);
+    font-family:'Montserrat', sans-serif;
+    font-weight:500;
+    font-size:20px;
+    letter-spacing:0.04em;
+    color:var(--sage-dark);
+    text-decoration:none;
+    cursor:pointer;
+    transition:opacity 0.2s ease;
+  }
+  #maps-link:hover{
+    opacity:0.7;
+    text-decoration:underline;
+  }
   @keyframes bob{
     0%,100%{transform:translateY(0);}
     50%{transform:translateY(6px);}
@@ -330,6 +355,11 @@
 <!-- ===================== HERO / INVITATION ===================== -->
 <section id="hero">
   <div class="scroll-cue">Faites défiler ↓</div>
+</section>
+
+<!-- ===================== MAP PAGE ===================== -->
+<section id="map-page">
+  <a id="maps-link" href="https://share.google/9FQwcCrrh9oko6hpX" target="_blank" rel="noopener">OUVRIR MAPS</a>
 </section>
 
 <!-- ===================== COUNTDOWN ===================== -->
