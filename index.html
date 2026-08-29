@@ -62,97 +62,96 @@
   #envelope-screen.playing .tap-hint{ display:none; }
   @keyframes pulse{ 0%,100%{opacity:0.5;} 50%{opacity:1;} }
 
-  /* --- Page 1: invitation text — scales to always fit one full screen,
-       on any phone, using height-based container query units (cqh) so
-       nothing is ever cropped or requires scrolling to see. --- */
+  /* --- Page 1: invitation text, using literal fixed sizes as specified --- */
   #hero{
     position:relative;
     width:100%;
-    height:100dvh;
+    min-height:100dvh;
     background:#565B4A;
     color:#FAF1E1;
-    overflow:hidden;
-    container-type:size;
     display:flex;
     align-items:center;
     justify-content:center;
+    padding:60px 0 90px;
   }
   .invite-text{
     width:100%;
-    padding:0 8%;
+    padding:0 7%;
     display:flex;
     flex-direction:column;
     align-items:center;
     text-align:center;
   }
-  .invite-text p, .invite-text div{ margin:0; }
+  .invite-text p{ margin:0; }
   .invite-line1{
     font-family:'Cormorant Garamond', serif;
     font-weight:400;
-    font-size:1.4063cqh;
+    font-size:27px;
+    line-height:1.3;
     letter-spacing:0.02em;
-    margin-bottom:5.7292cqh;
+    margin-bottom:40px;
   }
   .invite-line2{
     font-family:'Cormorant Garamond', serif;
     font-weight:300;
-    font-size:1.5104cqh;
-    line-height:1.4;
-    margin-bottom:6.7708cqh;
+    font-size:29px;
+    line-height:1.35;
+    margin-bottom:50px;
   }
   .invite-name{
     font-family:'Pinyon Script', cursive;
     font-weight:400;
-    font-size:min(5.2083cqh, 17cqi);
+    font-size:clamp(46px, 14vw, 100px);
     line-height:1.15;
-    margin-bottom:1.0417cqh;
+    margin-bottom:8px;
+    overflow-wrap:break-word;
   }
   .invite-avec{
     font-family:'Cormorant Garamond', serif;
     font-weight:400;
-    font-size:1.4583cqh;
+    font-size:28px;
     letter-spacing:0.03em;
-    margin-bottom:1.0417cqh;
+    margin-bottom:8px;
   }
   .invite-name.groom{
-    margin-bottom:5.7292cqh;
-    margin-top:0;
+    margin-bottom:45px;
   }
   .invite-line3{
     font-family:'Cormorant Garamond', serif;
     font-weight:400;
     font-style:italic;
-    font-size:1.3542cqh;
-    margin-bottom:3.6458cqh;
+    font-size:26px;
+    margin-bottom:25px;
   }
   .invite-date{
     font-family:'Cormorant Garamond', serif;
     font-weight:600;
-    font-size:min(2.1875cqh, 8cqi);
-    margin-bottom:3.6458cqh;
+    font-size:42px;
+    line-height:1.15;
+    margin-bottom:25px;
   }
   .invite-time{
     font-family:'Cormorant Garamond', serif;
     font-weight:400;
-    font-size:1.4583cqh;
-    margin-bottom:4.6875cqh;
+    font-size:28px;
+    margin-bottom:35px;
   }
   .invite-venue{
     font-family:'Cormorant Garamond', serif;
     font-weight:600;
-    font-size:1.5625cqh;
-    margin-bottom:0.3125cqh;
+    font-size:30px;
+    margin-bottom:2px;
   }
   .invite-city{
     font-family:'Montserrat', sans-serif;
     font-weight:400;
-    font-size:1.1458cqh;
+    font-size:22px;
     letter-spacing:0.02em;
   }
   .scroll-cue{
     position:absolute;
     left:50%;
-    bottom:2.5%;
+    bottom:20px;
     transform:translateX(-50%);
     color:#D6BD8C;
     text-shadow:0 2px 8px rgba(0,0,0,0.35);
