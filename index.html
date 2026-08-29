@@ -1,314 +1,297 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light only">
-<meta name="theme-color" content="#FAF1E1">
-<title>Melissa &amp; Badr Eddine — Mariage</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:ital,wght@0,400;0,500&family=Pinyon+Script&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --page-bg:#FAF1E1;
-    --ink:#565B4A;
-    color-scheme:light only;
-  }
-  *{box-sizing:border-box; margin:0; padding:0; forced-color-adjust:none;}
-  html{scroll-behavior:smooth; color-scheme:light only; background:#000;}
-  body{
-    background:#000;
-    overflow-x:hidden;
-    color-scheme:light only;
-  }
-  body.locked{overflow:hidden; height:100vh;}
-  @media (prefers-reduced-motion: reduce){
-    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  /* ================= VIDEO ENVELOPE SCREEN (fullscreen intro) ================= */
-  #envelope-screen{
-    position:fixed;
-    inset:0;
-    z-index:100;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#EDE6D5 url('assets/envelope-poster.jpg') center/cover no-repeat;
-    cursor:pointer;
-  }
-  #envelope-screen.hidden{ display:none; }
-  #envelope-video{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-    pointer-events:none;
-  }
-  .tap-hint{
-    position:absolute;
-    bottom:60px;
-    left:50%;
-    transform:translateX(-50%);
-    font-size:12px;
-    letter-spacing:0.2em;
-    text-transform:uppercase;
-    color:#FBF8F1;
-    text-shadow:0 2px 8px rgba(0,0,0,0.4);
-    opacity:0.9;
-    animation:pulse 2.2s ease-in-out infinite;
-    pointer-events:none;
-  }
-  #envelope-screen.playing .tap-hint{ display:none; }
-  @keyframes pulse{ 0%,100%{opacity:0.5;} 50%{opacity:1;} }
+    <title>Melissa & Badr Eddine</title>
 
-  /* --- Page 1: invitation text, using literal fixed sizes as specified --- */
-  #hero{
-    position:relative;
-    width:100%;
-    min-height:100dvh;
-    background:#565B4A;
-    color:#FAF1E1;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:60px 0 90px;
-  }
-  .invite-text{
-    width:100%;
-    padding:0 7%;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-  }
-  .invite-text p{ margin:0; }
-  .invite-line1{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:400;
-    font-size:27px;
-    line-height:1.3;
-    letter-spacing:0.02em;
-    margin-bottom:40px;
-  }
-  .invite-line2{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:300;
-    font-size:29px;
-    line-height:1.35;
-    margin-bottom:50px;
-  }
-  .invite-name{
-    font-family:'Pinyon Script', cursive;
-    font-weight:400;
-    font-size:clamp(46px, 14vw, 100px);
-    line-height:1.15;
-    margin-bottom:8px;
-    overflow-wrap:break-word;
-  }
-  .invite-avec{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:400;
-    font-size:28px;
-    letter-spacing:0.03em;
-    margin-bottom:8px;
-  }
-  .invite-name.groom{
-    margin-bottom:45px;
-  }
-  .invite-line3{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:400;
-    font-style:italic;
-    font-size:26px;
-    margin-bottom:25px;
-  }
-  .invite-date{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:600;
-    font-size:42px;
-    line-height:1.15;
-    margin-bottom:25px;
-  }
-  .invite-time{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:400;
-    font-size:28px;
-    margin-bottom:35px;
-  }
-  .invite-venue{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:600;
-    font-size:30px;
-    margin-bottom:2px;
-  }
-  .invite-city{
-    font-family:'Montserrat', sans-serif;
-    font-weight:400;
-    font-size:22px;
-    letter-spacing:0.02em;
-  }
-  .scroll-cue{
-    position:absolute;
-    left:50%;
-    bottom:20px;
-    transform:translateX(-50%);
-    color:#D6BD8C;
-    text-shadow:0 2px 8px rgba(0,0,0,0.35);
-    font-size:11px;
-    letter-spacing:0.2em;
-    text-transform:uppercase;
-    font-family:'Montserrat', sans-serif;
-    animation:bob 2.4s ease-in-out infinite;
-  }
+    <!-- Polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  /* ================= FIXED-CANVAS PAGE (map artboard = 1080x1920) ================= */
-  .page{
-    position:relative;
-    width:100%;
-    max-width:1080px;
-    aspect-ratio:1080/1920;
-    margin:0 auto;
-    overflow:hidden;
-    container-type:inline-size;
-  }
-  @keyframes bob{
-    0%,100%{transform:translateX(-50%) translateY(0);}
-    50%{transform:translateX(-50%) translateY(6px);}
-  }
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Pinyon+Script&display=swap"
+        rel="stylesheet"
+    >
 
-  /* --- Page 2: map page, built from real HTML text + graphic --- */
-  #map-page{
-    background:var(--page-bg);
-  }
-  #map-page .map-graphic{
-    position:absolute;
-    left:50%;
-    top:8.3333%;
-    width:39.8148%;
-    height:auto;
-    display:block;
-  }
-  #map-page .label{
-    position:absolute;
-    left:10%;
-    right:6%;
-    color:var(--ink);
-  }
-  #map-page .map-title{
-    top:13.0208%;
-    font-family:'Cormorant Garamond', serif;
-    font-weight:600;
-    font-size:4.6296cqw;
-    line-height:1.1;
-  }
-  #map-page .map-venue{
-    top:20.8333%;
-    font-family:'Cormorant Garamond', serif;
-    font-weight:400;
-    font-size:2.963cqw;
-  }
-  #map-page .map-address{
-    top:27.0833%;
-    display:flex;
-    align-items:flex-start;
-    gap:1.1cqw;
-    font-family:'Cormorant Garamond', serif;
-    font-style:italic;
-    font-weight:400;
-    font-size:2.3148cqw;
-    line-height:1.35;
-  }
-  #map-page .map-address svg{
-    width:2.4cqw;
-    height:2.4cqw;
-    flex-shrink:0;
-    margin-top:0.3cqw;
-    fill:var(--ink);
-  }
-  #map-page .maps-link{
-    top:36.4583%;
-    font-family:'Montserrat', sans-serif;
-    font-weight:500;
-    font-size:2.3148cqw;
-    letter-spacing:0.04em;
-    text-decoration:none;
-    color:var(--ink);
-    display:inline-block;
-    cursor:pointer;
-    transition:opacity 0.2s ease;
-  }
-  #map-page .maps-link:hover{
-    opacity:0.65;
-    text-decoration:underline;
-  }
-</style>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            background: #565b4b;
+            color: #f4f0e5;
+            font-family: "Cormorant Garamond", Georgia, serif;
+        }
+
+        .invitation {
+            width: 100%;
+            min-height: 100svh;
+
+            display: flex;
+            justify-content: center;
+        }
+
+        .invitation-content {
+            width: min(100%, 480px);
+            min-height: 100svh;
+
+            position: relative;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            padding:
+                clamp(70px, 11vh, 120px)
+                35px
+                clamp(50px, 8vh, 90px);
+        }
+
+
+        /* -------------------------
+           PARENTS
+        ------------------------- */
+
+        .parents {
+            font-size: clamp(20px, 2.6vw, 27px);
+            font-weight: 400;
+            text-align: center;
+
+            line-height: 1.2;
+
+            margin-bottom: clamp(70px, 9vh, 100px);
+        }
+
+
+        /* -------------------------
+           INVITATION TEXT
+        ------------------------- */
+
+        .intro {
+            max-width: 90%;
+
+            font-size: clamp(22px, 3vw, 29px);
+            font-weight: 400;
+
+            text-align: center;
+            line-height: 1.25;
+
+            margin-bottom: clamp(65px, 8vh, 90px);
+        }
+
+
+        /* -------------------------
+           NAMES
+        ------------------------- */
+
+        .names {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            margin-bottom: clamp(65px, 8vh, 90px);
+        }
+
+        .name {
+            font-family: "Pinyon Script", cursive;
+
+            font-size: clamp(75px, 12vw, 110px);
+            font-weight: 400;
+
+            line-height: 0.85;
+
+            white-space: nowrap;
+        }
+
+        .with {
+            font-family: "Cormorant Garamond", Georgia, serif;
+
+            font-size: clamp(23px, 3vw, 28px);
+            font-weight: 400;
+
+            margin: 20px 0;
+        }
+
+
+        /* -------------------------
+           DATE SECTION
+        ------------------------- */
+
+        .date-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            text-align: center;
+
+            margin-bottom: clamp(65px, 8vh, 90px);
+        }
+
+        .celebration {
+            font-size: clamp(22px, 3vw, 28px);
+
+            margin-bottom: 55px;
+        }
+
+        .date {
+            font-size: clamp(29px, 4vw, 42px);
+            font-weight: 600;
+
+            line-height: 1.1;
+
+            margin-bottom: 45px;
+        }
+
+        .time {
+            font-size: clamp(22px, 3vw, 28px);
+        }
+
+
+        /* -------------------------
+           LOCATION
+        ------------------------- */
+
+        .location {
+            text-align: center;
+
+            font-size: clamp(21px, 2.8vw, 27px);
+            font-weight: 300;
+
+            line-height: 1.25;
+
+            margin-top: auto;
+        }
+
+        .location-name {
+            font-weight: 400;
+        }
+
+
+        /* -------------------------
+           SMALL PHONES
+        ------------------------- */
+
+        @media (max-height: 700px) {
+
+            .invitation-content {
+                padding-top: 50px;
+                padding-bottom: 40px;
+            }
+
+            .parents {
+                margin-bottom: 45px;
+            }
+
+            .intro {
+                margin-bottom: 45px;
+            }
+
+            .names {
+                margin-bottom: 45px;
+            }
+
+            .name {
+                font-size: 75px;
+            }
+
+            .date-section {
+                margin-bottom: 45px;
+            }
+
+            .celebration {
+                margin-bottom: 30px;
+            }
+
+            .date {
+                margin-bottom: 25px;
+            }
+        }
+    </style>
 </head>
-<body class="locked">
 
-<!-- ===================== VIDEO ENVELOPE SCREEN ===================== -->
-<div id="envelope-screen">
-  <video id="envelope-video" src="assets/envelope-animation.mp4" poster="assets/envelope-poster.jpg" muted playsinline preload="auto"></video>
-  <div class="tap-hint">Cliquez pour ouvrir</div>
-</div>
 
-<!-- ===================== PAGE 1 : HERO / INVITATION REVEAL ===================== -->
-<section id="hero">
-  <div class="invite-text">
-    <p class="invite-line1">Madame Ould Braham Samira</p>
-    <p class="invite-line2">a la joie et l'honneur<br>de vous inviter au mariage de sa fille</p>
-    <p class="invite-name bride">Melissa</p>
-    <p class="invite-avec">avec</p>
-    <p class="invite-name groom">Badr Eddine</p>
-    <p class="invite-line3">qui sera célébré le</p>
-    <p class="invite-date">Samedi 12 décembre 2026</p>
-    <p class="invite-time">à 14:30</p>
-    <p class="invite-venue">à la salle Hamza</p>
-    <p class="invite-city">Dely Ibrahim, Alger</p>
-  </div>
-  <div class="scroll-cue">Faites défiler ↓</div>
+<body>
+
+<section class="invitation">
+
+    <div class="invitation-content">
+
+        <!-- Parents -->
+        <p class="parents">
+            Madame et Monsieur Ould Braham
+        </p>
+
+
+        <!-- Invitation -->
+        <p class="intro">
+            ont la joie et l'honneur<br>
+            de vous inviter au mariage de leur fille
+        </p>
+
+
+        <!-- Mariés -->
+        <div class="names">
+
+            <div class="name">
+                Melissa
+            </div>
+
+            <div class="with">
+                avec
+            </div>
+
+            <div class="name">
+                Badr Eddine
+            </div>
+
+        </div>
+
+
+        <!-- Date -->
+        <div class="date-section">
+
+            <p class="celebration">
+                qui sera célébré le
+            </p>
+
+            <p class="date">
+                Samedi 12 décembre 2026
+            </p>
+
+            <p class="time">
+                à 14:30
+            </p>
+
+        </div>
+
+
+        <!-- Lieu -->
+        <div class="location">
+
+            <p class="location-name">
+                à la salle Hamza
+            </p>
+
+            <p>
+                Dely Ibrahim, Alger
+            </p>
+
+        </div>
+
+    </div>
+
 </section>
-
-<!-- ===================== PAGE 2 : MAP PAGE ===================== -->
-<section class="page" id="map-page">
-  <img class="map-graphic" src="assets/map-graphic.png" alt="Plan d'accès">
-
-  <div class="label map-title">Retrouvez-nous</div>
-
-  <div class="label map-venue">Salle Hamza</div>
-
-  <div class="label map-address">
-    <svg viewBox="0 0 24 24"><path d="M12 2C7.6 2 4 5.6 4 10c0 5.4 7 11.5 7.3 11.8.2.1.4.2.7.2s.5-.1.7-.2C13 21.5 20 15.4 20 10c0-4.4-3.6-8-8-8zm0 11c-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3-1.3 3-3 3z"/></svg>
-    <span>14 rue Ahmed Ouaked<br>Dely Ibrahim, Alger</span>
-  </div>
-
-  <a class="label maps-link" href="https://maps.app.goo.gl/XSvzecsYN35hYMBC9" target="_blank" rel="noopener">Ouvrir maps</a>
-</section>
-
-<script>
-  const video = document.getElementById('envelope-video');
-  const envScreen = document.getElementById('envelope-screen');
-  const body = document.body;
-  let hasOpened = false;
-
-  video.addEventListener('loadeddata', () => {
-    video.currentTime = 0;
-    video.pause();
-  });
-
-  envScreen.addEventListener('click', () => {
-    if(hasOpened) return;
-    hasOpened = true;
-    envScreen.classList.add('playing');
-    video.play();
-  });
-
-  video.addEventListener('ended', () => {
-    envScreen.classList.add('hidden');
-    body.classList.remove('locked');
-    document.getElementById('hero').scrollIntoView({behavior:'auto'});
-  });
-</script>
 
 </body>
 </html>
