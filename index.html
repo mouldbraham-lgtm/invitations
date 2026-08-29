@@ -6,12 +6,11 @@
 
     <title>Melissa & Badr Eddine</title>
 
-    <!-- Polices -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Pinyon+Script&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Pinyon+Script&display=swap"
         rel="stylesheet"
     >
 
@@ -22,8 +21,7 @@
             padding: 0;
         }
 
-        html,
-        body {
+        html, body {
             width: 100%;
             min-height: 100%;
         }
@@ -31,195 +29,181 @@
         body {
             background: #565b4b;
             color: #f4f0e5;
-            font-family: "Cormorant Garamond", Georgia, serif;
+            font-family: "Cormorant Garamond", serif;
         }
 
         .invitation {
-            width: 100%;
             min-height: 100svh;
+            width: 100%;
 
             display: flex;
             justify-content: center;
         }
 
         .invitation-content {
-            width: min(100%, 480px);
+            width: 100%;
+            max-width: 430px;
+
             min-height: 100svh;
 
-            position: relative;
+            padding: 75px 35px 60px;
 
             display: flex;
             flex-direction: column;
             align-items: center;
-
-            padding:
-                clamp(70px, 11vh, 120px)
-                35px
-                clamp(50px, 8vh, 90px);
+            text-align: center;
         }
 
 
-        /* -------------------------
-           PARENTS
-        ------------------------- */
+        /* PARENTS */
 
         .parents {
-            font-size: clamp(20px, 2.6vw, 27px);
+            font-size: 21px;
             font-weight: 400;
-            text-align: center;
-
             line-height: 1.2;
 
-            margin-bottom: clamp(70px, 9vh, 100px);
+            margin-bottom: 82px;
         }
 
 
-        /* -------------------------
-           INVITATION TEXT
-        ------------------------- */
+        /* INTRO */
 
         .intro {
-            max-width: 90%;
-
-            font-size: clamp(22px, 3vw, 29px);
+            font-size: 23px;
             font-weight: 400;
+            line-height: 1.2;
 
-            text-align: center;
-            line-height: 1.25;
+            max-width: 350px;
 
-            margin-bottom: clamp(65px, 8vh, 90px);
+            margin-bottom: 72px;
         }
 
 
-        /* -------------------------
-           NAMES
-        ------------------------- */
+        /* NAMES */
 
         .names {
             display: flex;
             flex-direction: column;
             align-items: center;
 
-            margin-bottom: clamp(65px, 8vh, 90px);
+            margin-bottom: 75px;
         }
 
         .name {
             font-family: "Pinyon Script", cursive;
 
-            font-size: clamp(75px, 12vw, 110px);
+            font-size: 76px;
             font-weight: 400;
 
-            line-height: 0.85;
+            line-height: 0.82;
 
             white-space: nowrap;
         }
 
         .with {
-            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 22px;
+            line-height: 1;
 
-            font-size: clamp(23px, 3vw, 28px);
-            font-weight: 400;
-
-            margin: 20px 0;
+            margin: 18px 0;
         }
 
 
-        /* -------------------------
-           DATE SECTION
-        ------------------------- */
+        /* DATE */
 
         .date-section {
             display: flex;
             flex-direction: column;
             align-items: center;
 
-            text-align: center;
-
-            margin-bottom: clamp(65px, 8vh, 90px);
+            margin-bottom: 70px;
         }
 
         .celebration {
-            font-size: clamp(22px, 3vw, 28px);
+            font-size: 22px;
+            line-height: 1.2;
 
-            margin-bottom: 55px;
+            margin-bottom: 48px;
         }
 
         .date {
-            font-size: clamp(29px, 4vw, 42px);
+            font-size: 32px;
             font-weight: 600;
-
             line-height: 1.1;
 
-            margin-bottom: 45px;
+            margin-bottom: 38px;
+
+            white-space: nowrap;
         }
 
         .time {
-            font-size: clamp(22px, 3vw, 28px);
+            font-size: 22px;
         }
 
 
-        /* -------------------------
-           LOCATION
-        ------------------------- */
+        /* LOCATION */
 
         .location {
-            text-align: center;
-
-            font-size: clamp(21px, 2.8vw, 27px);
+            font-size: 21px;
             font-weight: 300;
-
-            line-height: 1.25;
-
-            margin-top: auto;
+            line-height: 1.2;
         }
 
         .location-name {
-            font-weight: 400;
+            margin-bottom: 3px;
         }
 
 
-        /* -------------------------
-           SMALL PHONES
-        ------------------------- */
+        /* SMALL PHONES */
 
-        @media (max-height: 700px) {
+        @media (max-width: 360px) {
 
             .invitation-content {
-                padding-top: 50px;
-                padding-bottom: 40px;
+                padding-left: 25px;
+                padding-right: 25px;
             }
 
             .parents {
-                margin-bottom: 45px;
+                font-size: 19px;
+                margin-bottom: 65px;
             }
 
             .intro {
-                margin-bottom: 45px;
-            }
-
-            .names {
-                margin-bottom: 45px;
+                font-size: 21px;
+                margin-bottom: 60px;
             }
 
             .name {
-                font-size: 75px;
+                font-size: 66px;
             }
 
-            .date-section {
-                margin-bottom: 45px;
+            .with {
+                font-size: 20px;
+                margin: 15px 0;
+            }
+
+            .names {
+                margin-bottom: 62px;
             }
 
             .celebration {
-                margin-bottom: 30px;
+                font-size: 20px;
+                margin-bottom: 38px;
             }
 
             .date {
-                margin-bottom: 25px;
+                font-size: 28px;
+            }
+
+            .time {
+                font-size: 20px;
+            }
+
+            .location {
+                font-size: 19px;
             }
         }
     </style>
 </head>
-
 
 <body>
 
@@ -227,20 +211,17 @@
 
     <div class="invitation-content">
 
-        <!-- Parents -->
         <p class="parents">
             Madame et Monsieur Ould Braham
         </p>
 
 
-        <!-- Invitation -->
         <p class="intro">
             ont la joie et l'honneur<br>
             de vous inviter au mariage de leur fille
         </p>
 
 
-        <!-- Mariés -->
         <div class="names">
 
             <div class="name">
@@ -258,7 +239,6 @@
         </div>
 
 
-        <!-- Date -->
         <div class="date-section">
 
             <p class="celebration">
@@ -276,7 +256,6 @@
         </div>
 
 
-        <!-- Lieu -->
         <div class="location">
 
             <p class="location-name">
