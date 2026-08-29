@@ -82,126 +82,101 @@
         50%{transform:translateX(-50%) translateY(6px);}
     }
 
-    /* ================= PAGE 1 : INVITATION ================= */
+    /* ================= PAGE 1 : INVITATION — pixel-matched to the reference
+       image, filling the screen the same way the video does (object-fit:cover
+       equivalent), so there is no visual shift when the video ends. ================= */
     .invitation {
-        min-height: 100svh;
-        width: 100%;
         position: relative;
-
-        display: flex;
-        justify-content: center;
-    }
-
-    .invitation-content {
         width: 100%;
-        max-width: 430px;
-
-        min-height: 100svh;
-
-        padding: 75px 35px 60px;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+        height: 100dvh;
+        overflow: hidden;
+        background: #565b4b;
     }
 
-
-    /* PARENTS */
-
-    .parents {
-        font-size: 21px;
-        font-weight: 400;
-        line-height: 1.2;
-
-        margin-bottom: 82px;
+    .invitation-canvas{
+        position:absolute;
+        top:50%;
+        left:50%;
+        width:max(100vw, calc(100dvh * 1080 / 1920));
+        aspect-ratio:1080/1920;
+        transform:translate(-50%,-50%);
+        container-type:inline-size;
     }
 
-
-    /* INTRO */
-
-    .intro {
-        font-size: 23px;
-        font-weight: 400;
-        line-height: 1.2;
-
-        max-width: 350px;
-
-        margin-bottom: 72px;
+    .invitation-canvas .line{
+        position:absolute;
+        left:0;
+        right:0;
+        text-align:center;
+        color:#f4f0e5;
     }
 
-
-    /* NAMES */
-
-    .names {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        margin-bottom: 75px;
+    .il-parents{
+        top:15.0521%;
+        font-size:2.5cqw;
+        font-weight:400;
+        letter-spacing:0.02em;
     }
 
-    .name {
-        font-family: "Pinyon Script", cursive;
-
-        font-size: 76px;
-        font-weight: 400;
-
-        line-height: 0.82;
-
-        white-space: nowrap;
+    .il-intro{
+        top:24.2188%;
+        font-size:2.6852cqw;
+        font-weight:400;
+        line-height:1.35;
     }
 
-    .with {
-        font-size: 22px;
-        line-height: 1;
-
-        margin: 18px 0;
+    .il-bride{
+        top:33.8021%;
+        font-family:"Pinyon Script", cursive;
+        font-size:9.2593cqw;
+        font-weight:400;
+        line-height:1;
     }
 
-
-    /* DATE */
-
-    .date-section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        margin-bottom: 70px;
+    .il-with{
+        top:43.75%;
+        font-size:2.5926cqw;
+        font-weight:400;
+        letter-spacing:0.03em;
     }
 
-    .celebration {
-        font-size: 22px;
-        line-height: 1.2;
-
-        margin-bottom: 48px;
+    .il-groom{
+        top:46.6667%;
+        font-family:"Pinyon Script", cursive;
+        font-size:9.2593cqw;
+        font-weight:400;
+        line-height:1;
     }
 
-    .date {
-        font-size: 32px;
-        font-weight: 600;
-        line-height: 1.1;
-
-        margin-bottom: 38px;
-
-        white-space: nowrap;
+    .il-celebration{
+        top:57.7083%;
+        font-size:2.4074cqw;
+        font-weight:400;
     }
 
-    .time {
-        font-size: 22px;
+    .il-date{
+        top:65.4167%;
+        font-size:3.8889cqw;
+        font-weight:600;
+        line-height:1.1;
     }
 
-
-    /* LOCATION */
-
-    .location {
-        font-size: 21px;
-        font-weight: 300;
-        line-height: 1.2;
+    .il-time{
+        top:73.75%;
+        font-size:2.5926cqw;
+        font-weight:400;
     }
 
-    .location-name {
-        margin-bottom: 3px;
+    .il-venue{
+        top:80.8333%;
+        font-size:2.7778cqw;
+        font-weight:600;
+    }
+
+    .il-city{
+        top:83.9583%;
+        font-size:2.037cqw;
+        font-weight:400;
     }
 
     /* SCROLL CUE */
@@ -217,57 +192,7 @@
         text-transform:uppercase;
         font-family:"Montserrat", sans-serif;
         animation:bob 2.4s ease-in-out infinite;
-    }
-
-
-    /* SMALL PHONES */
-
-    @media (max-width: 360px) {
-
-        .invitation-content {
-            padding-left: 25px;
-            padding-right: 25px;
-        }
-
-        .parents {
-            font-size: 19px;
-            margin-bottom: 65px;
-        }
-
-        .intro {
-            font-size: 21px;
-            margin-bottom: 60px;
-        }
-
-        .name {
-            font-size: 66px;
-        }
-
-        .with {
-            font-size: 20px;
-            margin: 15px 0;
-        }
-
-        .names {
-            margin-bottom: 62px;
-        }
-
-        .celebration {
-            font-size: 20px;
-            margin-bottom: 38px;
-        }
-
-        .date {
-            font-size: 28px;
-        }
-
-        .time {
-            font-size: 20px;
-        }
-
-        .location {
-            font-size: 19px;
-        }
+        z-index:2;
     }
 
     /* ================= PAGE 2 : MAP (fixed-canvas artboard = 1080x1920) ================= */
@@ -352,70 +277,33 @@
 <!-- ===================== VIDEO ENVELOPE SCREEN ===================== -->
 <div id="envelope-screen">
   <video id="envelope-video" src="assets/envelope-animation.mp4" poster="assets/envelope-poster.jpg" muted playsinline preload="auto"></video>
-  <div class="tap-hint">Cliquez pour ouvrir</div>
+  <div class="tap-hint">Touchez pour ouvrir l'invitation</div>
 </div>
 
 <!-- ===================== PAGE 1 : INVITATION ===================== -->
 <section class="invitation" id="hero">
 
-    <div class="invitation-content">
+    <div class="invitation-canvas">
 
-        <p class="parents">
-            Madame et Monsieur Ould Braham
-        </p>
+        <p class="line il-parents">Madame Ould Braham Samira</p>
 
+        <p class="line il-intro">a la joie et l'honneur<br>de vous inviter au mariage de sa fille</p>
 
-        <p class="intro">
-            ont la joie et l'honneur<br>
-            de vous inviter au mariage de leur fille
-        </p>
+        <p class="line il-bride">Melissa</p>
 
+        <p class="line il-with">avec</p>
 
-        <div class="names">
+        <p class="line il-groom">Badr Eddine</p>
 
-            <div class="name">
-                Melissa
-            </div>
+        <p class="line il-celebration">qui sera célébré le</p>
 
-            <div class="with">
-                avec
-            </div>
+        <p class="line il-date">Samedi 12 décembre 2026</p>
 
-            <div class="name">
-                Badr Eddine
-            </div>
+        <p class="line il-time">à 14:30</p>
 
-        </div>
+        <p class="line il-venue">à la salle Hamza</p>
 
-
-        <div class="date-section">
-
-            <p class="celebration">
-                qui sera célébré le
-            </p>
-
-            <p class="date">
-                Samedi 12 décembre 2026
-            </p>
-
-            <p class="time">
-                à 14:30
-            </p>
-
-        </div>
-
-
-        <div class="location">
-
-            <p class="location-name">
-                à la salle Hamza
-            </p>
-
-            <p>
-                Dely Ibrahim, Alger
-            </p>
-
-        </div>
+        <p class="line il-city">Dely Ibrahim, Alger</p>
 
     </div>
 
