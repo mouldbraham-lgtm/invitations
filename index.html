@@ -127,7 +127,7 @@
     .map-text{
         flex:1 1 46%;
         color:#565B4A;
-        text-align: center;
+        text-align:left;
     }
 
     .map-title{
@@ -149,8 +149,6 @@
         display:flex;
         align-items:flex-start;
         gap:1.6cqw;
-        justify-content:center;
-        text-align:center;
         font-family:'Cormorant Garamond', serif;
         font-style:italic;
         font-weight:400;
@@ -229,6 +227,8 @@
   <div class="tap-hint">Touchez pour ouvrir l'invitation</div>
 </div>
 
+<audio id="bg-song" src="assets/chanson.mp3" preload="auto" loop></audio>
+
 <!-- ===================== PAGE 1 : HERO / STATIC REVEAL ===================== -->
 <section id="hero">
   <div class="scroll-cue">Faites défiler ↓</div>
@@ -258,6 +258,7 @@
 <script>
   const video = document.getElementById('envelope-video');
   const envScreen = document.getElementById('envelope-screen');
+  const song = document.getElementById('bg-song');
   const body = document.body;
   let hasOpened = false;
 
@@ -271,6 +272,8 @@
     hasOpened = true;
     envScreen.classList.add('playing');
     video.play();
+    song.currentTime = 0;
+    song.play().catch(() => {});
   });
 
   video.addEventListener('ended', () => {
