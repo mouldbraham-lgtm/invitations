@@ -263,6 +263,13 @@
     width: 100%;
 }
 
+.note-icon {
+    width: 58px;
+    height: auto;
+    display: block;
+    margin: 0 auto 22px;
+}
+
 .note-title {
     font-family: "Cormorant Garamond", serif;
     font-size: 29px;
@@ -315,6 +322,11 @@
     .notes-main-title {
         font-size: 30px;
         margin-bottom: 55px;
+    }
+
+    .note-icon {
+        width: 48px;
+        margin-bottom: 18px;
     }
 
     .note-title {
@@ -373,36 +385,7 @@
   </div>
 </section>
 
-<script>
-  const video = document.getElementById('envelope-video');
-  const envScreen = document.getElementById('envelope-screen');
-  const song = document.getElementById('bg-song');
-  const body = document.body;
-  let hasOpened = false;
-
-  video.addEventListener('loadeddata', () => {
-    video.currentTime = 0;
-    video.pause();
-  });
-
-  envScreen.addEventListener('click', () => {
-    if(hasOpened) return;
-    hasOpened = true;
-    envScreen.classList.add('playing');
-    video.play();
-    song.currentTime = 0;
-    song.play().catch(() => {});
-  });
-
-  video.addEventListener('ended', () => {
-    envScreen.classList.add('hidden');
-    body.classList.remove('locked');
-    document.getElementById('hero').scrollIntoView({behavior:'auto'});
-  });
-</script>
-
-
-    <!-- ===================== PAGE 3 : PETITES ATTENTIONS ===================== -->
+<!-- ===================== PAGE 3 : PETITES ATTENTIONS ===================== -->
 
 <section id="notes-page">
 
@@ -416,6 +399,8 @@
         <!-- PHOTOS -->
 
         <div class="note-block">
+
+            <img class="note-icon" src="assets/icon-camera.png" alt="">
 
             <h3 class="note-title">
                 Déconnectons-nous un instant
@@ -445,6 +430,8 @@
 
         <div class="note-block">
 
+            <img class="note-icon" src="assets/icon-enfants.png" alt="">
+
             <h3 class="note-title">
                 Et pour nos petits monstres…
             </h3>
@@ -464,5 +451,34 @@
     </div>
 
 </section>
+
+<script>
+  const video = document.getElementById('envelope-video');
+  const envScreen = document.getElementById('envelope-screen');
+  const song = document.getElementById('bg-song');
+  const body = document.body;
+  let hasOpened = false;
+
+  video.addEventListener('loadeddata', () => {
+    video.currentTime = 0;
+    video.pause();
+  });
+
+  envScreen.addEventListener('click', () => {
+    if(hasOpened) return;
+    hasOpened = true;
+    envScreen.classList.add('playing');
+    video.play();
+    song.currentTime = 0;
+    song.play().catch(() => {});
+  });
+
+  video.addEventListener('ended', () => {
+    envScreen.classList.add('hidden');
+    body.classList.remove('locked');
+    document.getElementById('hero').scrollIntoView({behavior:'auto'});
+  });
+</script>
+
 </body>
 </html>
