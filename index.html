@@ -359,8 +359,6 @@
 
 <audio id="bg-song" src="assets/chanson.mp3" preload="auto" loop></audio>
 
-<div id="debug-log" style="display:none; position:fixed; bottom:0; left:0; right:0; max-height:45vh; overflow:auto; background:rgba(0,0,0,0.9); color:#7CFC7C; font:12px/1.5 monospace; padding:10px; z-index:999; white-space:pre-wrap; -webkit-user-select:text; user-select:text;"></div>
-
 <!-- ===================== PAGE 1 : HERO / STATIC REVEAL ===================== -->
 <section id="hero">
   <div class="scroll-cue">Faites défiler ↓</div>
@@ -405,18 +403,19 @@
             <img class="note-icon" src="assets/icon-camera.png" alt="">
 
             <h3 class="note-title">
-                Les photos et vidéos sont interdites !
+                Déconnectons-nous un instant
             </h3>
 
             <p class="note-text">
-                Afin de profiter de chaque instant à nos côtés,
+                Afin de profiter pleinement de chaque instant à nos côtés,
                 nous vous invitons à déposer vos téléphones
                 et à laisser notre photographe immortaliser
                 ces précieux moments.
             </p>
 
             <p class="note-text note-highlight">
-                Merci de vivre cette journée avec nous pleinement.
+                Merci de vivre cette journée avec nous,
+                pleinement et sans écran.
             </p>
 
         </div>
@@ -434,17 +433,17 @@
             <img class="note-icon" src="assets/icon-enfants.png" alt="">
 
             <h3 class="note-title">
-                Et pour les enfants…
+                Et pour nos petits monstres…
             </h3>
 
             <p class="note-text">
                 Afin que chacun puisse profiter de cette belle journée,
                 se reposer, danser et prendre du plaisir,
-                nous vous invitons à laisser vos petits monstres à la maison.
+                nous vous invitons à les laisser à la maison.
             </p>
 
             <p class="note-text note-highlight">
-                La fête est réservée aux grands. Merci!
+                La fête est réservée aux grands !
             </p>
 
         </div>
@@ -458,30 +457,7 @@
   const envScreen = document.getElementById('envelope-screen');
   const song = document.getElementById('bg-song');
   const body = document.body;
-  const debugPanel = document.getElementById('debug-log');
   let hasOpened = false;
-
-  function debugLog(msg){
-    debugPanel.style.display = 'block';
-    debugPanel.textContent += msg + '\n';
-  }
-
-  const AUDIO_ERROR_NAMES = {
-    1: 'MEDIA_ERR_ABORTED (loading was aborted)',
-    2: 'MEDIA_ERR_NETWORK (network error while loading)',
-    3: 'MEDIA_ERR_DECODE (file could not be decoded)',
-    4: 'MEDIA_ERR_SRC_NOT_SUPPORTED (file not found or format unsupported — check the file path/name!)'
-  };
-
-  song.addEventListener('error', () => {
-    const err = song.error;
-    const label = err ? (AUDIO_ERROR_NAMES[err.code] || ('code ' + err.code)) : 'unknown error';
-    debugLog('AUDIO ERROR: ' + label);
-  });
-
-  window.addEventListener('error', (e) => {
-    debugLog('JS ERROR: ' + e.message + ' (' + e.filename + ':' + e.lineno + ')');
-  });
 
   video.addEventListener('loadeddata', () => {
     video.currentTime = 0;
@@ -493,15 +469,7 @@
     hasOpened = true;
     envScreen.classList.add('playing');
     video.play();
-    song.muted = false;
-    song.volume = 1;
-    try { song.currentTime = 0; } catch (e) {}
-    debugLog('Attempting song.play() — readyState=' + song.readyState + ', networkState=' + song.networkState);
-    song.play().then(() => {
-      debugLog('song.play() succeeded — audio should be playing.');
-    }).catch((err) => {
-      debugLog('song.play() REJECTED: ' + err.name + ' — ' + err.message);
-    });
+    song.play().catch(() => {});
   });
 
   video.addEventListener('ended', () => {
