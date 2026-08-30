@@ -469,8 +469,10 @@
     hasOpened = true;
     envScreen.classList.add('playing');
     video.play();
-    song.currentTime = 0;
-    song.play().catch(() => {});
+    song.muted = false;
+    song.volume = 1;
+    try { song.currentTime = 0; } catch (e) {}
+    song.play().catch((err) => { console.warn('Song failed to play:', err); });
   });
 
   video.addEventListener('ended', () => {
