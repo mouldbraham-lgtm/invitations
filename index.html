@@ -93,7 +93,7 @@
         height:100dvh;
         background:#565b4b url('assets/invite-reveal.jpg') center/cover no-repeat;
     }
-    .scroll-cue{
+.scroll-cue{
     position:absolute;
     left:50%;
     bottom:20px;
@@ -101,6 +101,10 @@
     display:flex;
     align-items:center;
     gap:10px;
+    background:rgba(214,189,140,0.18);
+    border:1px solid #D6BD8C;
+    border-radius:999px;
+    padding:10px 20px;
     animation:bob 2.4s ease-in-out infinite;
 }
 .scroll-cue .scroll-text{
@@ -369,7 +373,7 @@
 <!-- ===================== VIDEO ENVELOPE SCREEN ===================== -->
 <div id="envelope-screen">
   <video id="envelope-video" src="assets/envelope-animation.mp4" poster="assets/envelope-poster.jpg" muted playsinline preload="auto"></video>
-  <div class="tap-hint">Touchez pour ouvrir l'invitation</div>
+  <div class="tap-hint">Touchez pour ouvrir</div>
 </div>
 
 <audio id="bg-song" src="assets/chanson.mp3" preload="auto" loop></audio>
