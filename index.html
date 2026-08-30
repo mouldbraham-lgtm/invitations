@@ -218,6 +218,122 @@
         .map-address svg{ width:18px; height:18px; margin-top:2px; }
         .maps-link{ font-size:4vw; padding:10px 24px; }
     }
+
+    /* ================= PAGE 3 : PETITES ATTENTIONS ================= */
+
+#notes-page {
+    min-height: 100dvh;
+    width: 100%;
+
+    background: #FAF1E1;
+    color: #565B4A;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 70px 35px;
+}
+
+.notes-content {
+    width: 100%;
+    max-width: 430px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+/* TITRE */
+
+.notes-main-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 1.1;
+
+    margin-bottom: 70px;
+}
+
+/* BLOCS */
+
+.note-block {
+    width: 100%;
+}
+
+.note-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 29px;
+    font-weight: 600;
+    line-height: 1.1;
+
+    margin-bottom: 25px;
+}
+
+.note-text {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 1.4;
+
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+/* PHRASE IMPORTANTE */
+
+.note-highlight {
+    font-weight: 600;
+    font-size: 22px;
+
+    margin-top: 24px;
+}
+
+/* SEPARATION */
+
+.note-divider {
+    width: 70px;
+    height: 1px;
+
+    background: #565B4A;
+    opacity: 0.35;
+
+    margin: 65px auto;
+}
+
+
+/* PETITS ECRANS */
+
+@media (max-width: 360px) {
+
+    #notes-page {
+        padding: 55px 25px;
+    }
+
+    .notes-main-title {
+        font-size: 30px;
+        margin-bottom: 55px;
+    }
+
+    .note-title {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+
+    .note-text {
+        font-size: 19px;
+    }
+
+    .note-highlight {
+        font-size: 20px;
+    }
+
+    .note-divider {
+        margin: 50px auto;
+    }
+}
 </style>
 </head>
 
@@ -285,5 +401,68 @@
   });
 </script>
 
+
+    <!-- ===================== PAGE 3 : PETITES ATTENTIONS ===================== -->
+
+<section id="notes-page">
+
+    <div class="notes-content">
+
+        <h2 class="notes-main-title">
+            Quelques petites attentions
+        </h2>
+
+
+        <!-- PHOTOS -->
+
+        <div class="note-block">
+
+            <h3 class="note-title">
+                Déconnectons-nous un instant
+            </h3>
+
+            <p class="note-text">
+                Afin de profiter pleinement de chaque instant à nos côtés,
+                nous vous invitons à déposer vos téléphones
+                et à laisser notre photographe immortaliser
+                ces précieux moments.
+            </p>
+
+            <p class="note-text note-highlight">
+                Merci de vivre cette journée avec nous,
+                pleinement et sans écran.
+            </p>
+
+        </div>
+
+
+        <!-- SEPARATION -->
+
+        <div class="note-divider"></div>
+
+
+        <!-- ENFANTS -->
+
+        <div class="note-block">
+
+            <h3 class="note-title">
+                Et pour nos petits monstres…
+            </h3>
+
+            <p class="note-text">
+                Afin que chacun puisse profiter de cette belle journée,
+                se reposer, danser et prendre du plaisir,
+                nous vous invitons à les laisser à la maison.
+            </p>
+
+            <p class="note-text note-highlight">
+                La fête est réservée aux grands !
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 </body>
 </html>
