@@ -303,7 +303,69 @@
     }
 
     /* ================= PAGE 3 : PETITES ATTENTIONS ================= */
-
+#rsvp-page{
+    min-height:100dvh;
+    width:100%;
+    background:#565b4b;
+    color:#FAF1E1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:70px 30px;
+}
+.rsvp-content{
+    width:100%;
+    max-width:400px;
+    text-align:center;
+}
+.rsvp-title{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size:32px;
+    margin-bottom:10px;
+}
+.rsvp-form{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+.rsvp-input{
+    width:100%;
+    font-family:'Montserrat', sans-serif;
+    font-size:15px;
+    color:#565B4A;
+    background:#FAF1E1;
+    border:none;
+    border-radius:10px;
+    padding:14px 16px;
+    outline:none;
+}
+.rsvp-input::placeholder{ color:#565B4A; opacity:0.6; }
+textarea.rsvp-input{ resize:none; font-family:'Montserrat', sans-serif; }
+.rsvp-submit{
+    font-family:'Montserrat', sans-serif;
+    font-weight:500;
+    font-size:15px;
+    letter-spacing:0.03em;
+    color:#565b4b;
+    background:#D6BD8C;
+    border:none;
+    border-radius:999px;
+    padding:14px;
+    margin-top:6px;
+    cursor:pointer;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+.rsvp-submit:active{
+    transform:translateY(2px) scale(0.98);
+}
+.rsvp-success{
+    font-family:'Cormorant Garamond', serif;
+    font-size:20px;
+    color:#D6BD8C;
+    margin-top:20px;
+}
 #notes-page {
     min-height: 100dvh;
     width: 100%;
@@ -535,7 +597,33 @@
     </div>
   </div>
 </div>
-<!-- ===================== PAGE 3 : MAP CARD ===================== -->
+<!-- ===================== RSVP ===================== -->
+<section id="rsvp-page">
+  <div class="rsvp-content">
+    <p class="rsvp-title">Confirmez votre présence</p>
+
+    <form id="rsvp-form" class="rsvp-form">
+      <input type="hidden" name="access_key" value="a410c796-bbb1-4490-9a4c-d6ddf227d596">
+      <input type="hidden" name="subject" value="Nouvelle réponse RSVP — Mariage Melissa & Badr Eddine">
+
+      <input type="text" name="Nom" placeholder="Votre nom complet" required class="rsvp-input">
+
+      <select name="Présence" required class="rsvp-input">
+        <option value="" disabled selected>Serez-vous présent(e) ?</option>
+        <option value="Oui, avec plaisir">Oui, avec plaisir</option>
+        <option value="Non, je ne pourrai pas venir">Non, je ne pourrai pas venir</option>
+      </select>
+
+      <button type="submit" class="rsvp-submit">Envoyer ma réponse</button>
+    </form>
+
+    <p id="rsvp-success" class="rsvp-success" style="display:none;">
+      Merci ! Votre réponse a bien été envoyée. ✓
+    </p>
+  </div>
+</section>
+
+    <!-- ===================== PAGE 3 : MAP CARD ===================== -->
 <section id="map-page">
   <div class="map-card">
 
@@ -605,7 +693,26 @@ function updateCountdown(){
 }
 updateCountdown();
 setInterval(updateCountdown, 1000);
-    
+
+const rsvpForm = document.getElementById('rsvp-form');
+rsvpForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  const formData = new FormData(rsvpForm);
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    body: formData
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success){
+      rsvpForm.style.display = 'none';
+      document.getElementById('rsvp-success').style.display = 'block';
+    } else {
+      alert('Une erreur est survenue, merci de réessayer.');
+    }
+  })
+  .catch(() => alert('Une erreur est survenue, merci de réessayer.'));
+});
 </script>
 
 </body>
