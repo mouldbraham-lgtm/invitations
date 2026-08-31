@@ -85,29 +85,27 @@
         0%,100%{transform:translateX(-50%) translateY(0);}
         50%{transform:translateX(-50%) translateY(6px);}
     }
-
-    #countdown-page{
-    min-height:100dvh;
+.countdown-inline{
     width:100%;
-    background:#565b4b;
-    color:#FAF1E1;
+    max-width:430px;
+    margin:0 auto;
+    padding:40px 20px;
     display:flex;
     flex-direction:column;
     align-items:center;
-    justify-content:center;
-    padding:60px 20px;
     text-align:center;
 }
-.countdown-title{
+.countdown-message{
     font-family:'Cormorant Garamond', serif;
-    font-weight:600;
-    font-size:32px;
-    letter-spacing:0.03em;
-    margin-bottom:50px;
+    font-style:italic;
+    font-weight:400;
+    font-size:22px;
+    color:#565B4A;
+    margin-bottom:26px;
 }
 .countdown-grid{
     display:flex;
-    gap:18px;
+    gap:14px;
 }
 .countdown-item{
     display:flex;
@@ -115,29 +113,30 @@
     align-items:center;
     background:rgba(214,189,140,0.15);
     border:1px solid #D6BD8C;
-    border-radius:16px;
-    padding:18px 14px;
-    min-width:70px;
+    border-radius:14px;
+    padding:14px 12px;
+    min-width:62px;
 }
 .countdown-number{
     font-family:'Cormorant Garamond', serif;
     font-weight:600;
-    font-size:38px;
+    font-size:30px;
     line-height:1;
-    color:#D6BD8C;
+    color:#565B4A;
 }
 .countdown-label{
     font-family:'Montserrat', sans-serif;
-    font-size:11px;
+    font-size:10px;
     letter-spacing:0.1em;
     text-transform:uppercase;
-    margin-top:8px;
-    color:#FAF1E1;
+    margin-top:6px;
+    color:#565B4A;
+    opacity:0.75;
 }
 @media (max-width:360px){
-    .countdown-grid{ gap:10px; }
-    .countdown-item{ min-width:58px; padding:14px 10px; }
-    .countdown-number{ font-size:30px; }
+    .countdown-grid{ gap:8px; }
+    .countdown-item{ min-width:52px; padding:12px 8px; }
+    .countdown-number{ font-size:26px; }
 }
 
     /* ================= PAGE 1 : STATIC REVEAL IMAGE ================= */
@@ -512,10 +511,10 @@
 
 </section>
     
-<!-- ===================== PAGE 3 : MAP CARD ===================== -->
+<!-- ===================== PAGE COUNTDOWN ===================== -->
     
-<section id="countdown-page">
-  <p class="countdown-title">Compte à rebours</p>
+<div class="countdown-inline">
+  <p class="countdown-message">Il ne reste plus que...</p>
   <div class="countdown-grid">
     <div class="countdown-item">
       <span class="countdown-number" id="cd-days">00</span>
@@ -534,7 +533,7 @@
       <span class="countdown-label">Secondes</span>
     </div>
   </div>
-</section>
+</div>
     
 <!-- ===================== PAGE 3 : MAP CARD ===================== -->
 <section id="map-page">
