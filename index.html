@@ -86,6 +86,60 @@
         50%{transform:translateX(-50%) translateY(6px);}
     }
 
+    #countdown-page{
+    min-height:100dvh;
+    width:100%;
+    background:#565b4b;
+    color:#FAF1E1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:60px 20px;
+    text-align:center;
+}
+.countdown-title{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size:32px;
+    letter-spacing:0.03em;
+    margin-bottom:50px;
+}
+.countdown-grid{
+    display:flex;
+    gap:18px;
+}
+.countdown-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    background:rgba(214,189,140,0.15);
+    border:1px solid #D6BD8C;
+    border-radius:16px;
+    padding:18px 14px;
+    min-width:70px;
+}
+.countdown-number{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size:38px;
+    line-height:1;
+    color:#D6BD8C;
+}
+.countdown-label{
+    font-family:'Montserrat', sans-serif;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    margin-top:8px;
+    color:#FAF1E1;
+}
+@media (max-width:360px){
+    .countdown-grid{ gap:10px; }
+    .countdown-item{ min-width:58px; padding:14px 10px; }
+    .countdown-number{ font-size:30px; }
+}
+
     /* ================= PAGE 1 : STATIC REVEAL IMAGE ================= */
     #hero{
         position:relative;
@@ -459,6 +513,30 @@
 </section>
     
 <!-- ===================== PAGE 3 : MAP CARD ===================== -->
+    
+<section id="countdown-page">
+  <p class="countdown-title">Compte à rebours</p>
+  <div class="countdown-grid">
+    <div class="countdown-item">
+      <span class="countdown-number" id="cd-days">00</span>
+      <span class="countdown-label">Jours</span>
+    </div>
+    <div class="countdown-item">
+      <span class="countdown-number" id="cd-hours">00</span>
+      <span class="countdown-label">Heures</span>
+    </div>
+    <div class="countdown-item">
+      <span class="countdown-number" id="cd-minutes">00</span>
+      <span class="countdown-label">Minutes</span>
+    </div>
+    <div class="countdown-item">
+      <span class="countdown-number" id="cd-seconds">00</span>
+      <span class="countdown-label">Secondes</span>
+    </div>
+  </div>
+</section>
+    
+<!-- ===================== PAGE 3 : MAP CARD ===================== -->
 <section id="map-page">
   <div class="map-card">
 
@@ -479,7 +557,7 @@
   </div>
 </section>
 
-
+<!-- ===================== downcounter ===================== -->
 <script>
   const video = document.getElementById('envelope-video');
   const envScreen = document.getElementById('envelope-screen');
@@ -505,6 +583,30 @@
     body.classList.remove('locked');
     document.getElementById('hero').scrollIntoView({behavior:'auto'});
   });
+
+    const countdownTarget = new Date("2026-12-12T14:00:00+01:00").getTime();
+function updateCountdown(){
+  const now = Date.now();
+  const diff = countdownTarget - now;
+  if (diff <= 0){
+    document.getElementById('cd-days').textContent = '00';
+    document.getElementById('cd-hours').textContent = '00';
+    document.getElementById('cd-minutes').textContent = '00';
+    document.getElementById('cd-seconds').textContent = '00';
+    return;
+  }
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+  document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+  document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+  document.getElementById('cd-minutes').textContent = String(minutes).padStart(2, '0');
+  document.getElementById('cd-seconds').textContent = String(seconds).padStart(2, '0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+    
 </script>
 
 </body>
