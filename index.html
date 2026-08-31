@@ -491,6 +491,47 @@ textarea.rsvp-input{ resize:none; font-family:'Montserrat', sans-serif; }
         margin: 50px auto;
     }
 }
+
+    /* ================= FORCE LIGHT MODE ================= */
+
+html {
+    color-scheme: light only !important;
+    background-color: #565b4b !important;
+}
+
+body {
+    color-scheme: light only !important;
+    background-color: #565b4b !important;
+}
+
+/* Empêche le navigateur de modifier les couleurs des formulaires */
+input,
+select,
+textarea,
+button {
+    color-scheme: light only !important;
+}
+
+/* Force les couleurs originales */
+.rsvp-input {
+    background-color: #FAF1E1 !important;
+    color: #565B4A !important;
+}
+
+.rsvp-input::placeholder {
+    color: #565B4A !important;
+    opacity: 0.6 !important;
+}
+
+.rsvp-submit {
+    background-color: #D6BD8C !important;
+    color: #565B4A !important;
+}
+
+select option {
+    background-color: #FAF1E1 !important;
+    color: #565B4A !important;
+}
 </style>
 </head>
 
