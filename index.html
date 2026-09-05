@@ -500,32 +500,13 @@ textarea.rsvp-input{ resize:none; font-family:'Montserrat', sans-serif; }
 }
 
   /* ================= divider ================= */  
-.section-divider-space {
-    width: 100%;
-    background-color: #FAF1E1;
-    padding: 30px 0;
-}
 
 .section-divider {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 70%;
-    max-width: 300px;
-    margin: 0 auto;
-}
-
-.section-divider::before,
-.section-divider::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background-color: #565B4A;
-}
-
-.divider-star {
+    text-align: center;
     color: #565B4A;
-    font-size: 12px;
+    font-size: 14px;
+    margin: 30px 0;
+    line-height: 1;
 }
 
 /* ================= FORCE LIGHT MODE ================= */
@@ -630,13 +611,11 @@ select option {
             <p class="note-text note-highlight">Merci de votre compréhension !</p>
         </div>
     </div>
+    <div class="section-divider">
+    <span>────────────────✦────────────────</span>
+    </div>
 </section>
     
-<div class="section-divider">
-    <span></span>
-    <span class="divider-star">✦</span>
-    <span></span>
-</div>
     
 <div class="countdown-inline">
   <p class="countdown-message">Il ne reste plus que...</p>
@@ -646,12 +625,9 @@ select option {
     <div class="countdown-item"><span class="countdown-number" id="cd-minutes">00</span><span class="countdown-label">Minutes</span></div>
     <div class="countdown-item"><span class="countdown-number" id="cd-seconds">00</span><span class="countdown-label">Secondes</span></div>
   </div>
+    <div class="section-divider">
+    <span>────────────────✦────────────────</span>
 </div>
-    
-<div class="section-divider">
-    <span></span>
-    <span class="divider-star">✦</span>
-    <span></span>
 </div>
     
 <section id="rsvp-page">
@@ -672,14 +648,11 @@ select option {
     </form>
     <p id="rsvp-success" class="rsvp-success" style="display:none;">Merci ! Votre réponse a bien été envoyée. ✓</p>
   </div>
+    <div class="section-divider">
+    <span>────────────────✦────────────────</span>
+</div>
 </section>
 
-<div class="section-divider">
-    <span></span>
-    <span class="divider-star">✦</span>
-    <span></span>
-</div>
-    
 <section id="map-page">
   <div class="map-card">
     <div class="map-text">
