@@ -86,7 +86,7 @@
         50%{transform:translateX(-50%) translateY(6px);}
     }
 
-    
+    /* ================= countdown ================= */
 .countdown-inline{
     width:100%;
     display:flex;
@@ -141,7 +141,7 @@
     .countdown-number{ font-size:20px; }
 }
 
-    /* ================= PAGE 1 : STATIC REVEAL IMAGE ================= */
+    /* ================= STATIC REVEAL IMAGE ================= */
     #hero{
         position:relative;
         width:100%;
@@ -176,7 +176,7 @@
     text-shadow:0 2px 8px rgba(0,0,0,0.35);
     font-size:16px;
 }
-    /* ================= PAGE 2 : MAP CARD (beige, text left / map right) ================= */
+    /* ================= map card ================= */
     #map-page{
         min-height:100dvh;
         width:100%;
@@ -302,7 +302,7 @@
         .maps-link{ font-size:4vw; padding:10px 24px; }
     }
 
-    /* ================= PAGE 3 : PETITES ATTENTIONS ================= */
+    /* ================= rsvp ================= */
 #rsvp-page{
     width:100%;
     background:#FAF1E1;
@@ -322,6 +322,15 @@
     font-weight:600;
     font-size:32px;
     margin-bottom:22px;
+}
+
+.rsvp-subtitle{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:18px;
+    background:#FAF1E1;
+    color:#565B4A;
+    margin-bottom:36px;
 }
 .rsvp-form{
     display:flex;
@@ -366,6 +375,8 @@ textarea.rsvp-input{ resize:none; font-family:'Montserrat', sans-serif; }
     color:#565B4A;
     margin-top:20px;
 }
+
+    /* ================= petites attentions ================= */
 #notes-page {
     min-height: 100dvh;
     width: 100%;
@@ -513,6 +524,37 @@ select option {
     background-color: #FAF1E1 !important;
     color: #565B4A !important;
 }
+/* ================= MUSIC TOGGLE ================= */
+.music-toggle{
+    position:fixed;
+    top:18px;
+    right:18px;
+    z-index:60;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    background:rgba(214,189,140,0.22);
+    border:1px solid #565B4A;
+    box-shadow:0 4px 14px rgba(0,0,0,0.2);
+    cursor:pointer;
+    padding:0;
+}
+.music-toggle.visible{ display:flex; }
+.music-toggle svg{
+    width:20px;
+    height:20px;
+    fill:none;
+    stroke:#565B4A;
+    stroke-width:1.8;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+.music-toggle .icon-muted{ display:none; }
+.music-toggle.is-muted .icon-playing{ display:none; }
+.music-toggle.is-muted .icon-muted{ display:block; }
 </style>
 </head>
 
@@ -524,6 +566,11 @@ select option {
 </div>
 
 <audio id="bg-song" src="assets/chanson.mp3" preload="auto" loop></audio>
+
+<button id="music-toggle" class="music-toggle" aria-label="Couper la musique">
+  <svg class="icon-playing" viewBox="0 0 24 24"><path d="M4 9v6h4l5 5V4L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg>
+  <svg class="icon-muted" viewBox="0 0 24 24"><path d="M4 9v6h4l5 5V4L8 9H4z"/><line x1="16" y1="9" x2="21" y2="14"/><line x1="21" y1="9" x2="16" y2="14"/></svg>
+</button>
 
 <section id="hero">
   <div class="scroll-cue">↓ Faites défiler ↓</div>
@@ -570,6 +617,8 @@ select option {
         <option value="Oui, avec plaisir">Oui, avec plaisir</option>
         <option value="Non, je ne pourrai pas venir">Non, je ne pourrai pas venir</option>
       </select>
+        <textarea name="Message" placeholder="Un petit mot pour les mariés (facultatif)" rows="3" class="rsvp-input"></textarea>
+
       <button type="submit" class="rsvp-submit">Envoyer ma réponse</button>
     </form>
     <p id="rsvp-success" class="rsvp-success" style="display:none;">Merci ! Votre réponse a bien été envoyée. ✓</p>
@@ -597,6 +646,7 @@ select option {
   const video = document.getElementById('envelope-video');
   const envScreen = document.getElementById('envelope-screen');
   const song = document.getElementById('bg-song');
+  const musicToggle = document.getElementById('music-toggle');
   const body = document.body;
   let hasOpened = false;
   let fallbackTimer = null;
@@ -606,8 +656,14 @@ select option {
     clearTimeout(fallbackTimer);
     envScreen.classList.add('hidden');
     body.classList.remove('locked');
+    musicToggle.classList.add('visible');
     document.getElementById('hero').scrollIntoView({behavior:'auto'});
   }
+
+  musicToggle.addEventListener('click', () => {
+    song.muted = !song.muted;
+    musicToggle.classList.toggle('is-muted', song.muted);
+  });
 
   video.addEventListener('loadeddata', () => {
     video.currentTime = 0;
