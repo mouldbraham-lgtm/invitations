@@ -311,7 +311,7 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:40px 30px;
+    padding:70px 30px;
 }
 .rsvp-content{
     width:100%;
@@ -391,8 +391,6 @@ textarea.rsvp-input{ resize:none; font-family:'Montserrat', sans-serif; }
     text-align: center;
 }
 
-/* TITRE */
-
 .notes-main-title {
     font-family: "Cormorant Garamond", serif;
     font-size: 34px;
@@ -401,8 +399,6 @@ textarea.rsvp-input{ resize:none; font-family:'Montserrat', sans-serif; }
 
     margin-bottom: 70px;
 }
-
-/* BLOCS */
 
 .note-block {
     width: 100%;
@@ -434,16 +430,12 @@ textarea.rsvp-input{ resize:none; font-family:'Montserrat', sans-serif; }
     margin: 0 auto;
 }
 
-/* PHRASE IMPORTANTE */
-
 .note-highlight {
     font-weight: 600;
     font-size: 22px;
 
     margin-top: 24px;
 }
-
-/* SEPARATION */
 
 .note-divider {
     width: 70px;
@@ -454,9 +446,6 @@ textarea.rsvp-input{ resize:none; font-family:'Montserrat', sans-serif; }
 
     margin: 65px auto;
 }
-
-
-/* PETITS ECRANS */
 
 @media (max-width: 360px) {
 
@@ -491,53 +480,11 @@ textarea.rsvp-input{ resize:none; font-family:'Montserrat', sans-serif; }
         margin: 50px auto;
     }
 }
-
-    /* ================= FORCE LIGHT MODE ================= */
-
-html {
-    color-scheme: light only !important;
-    background-color: #565b4b !important;
-}
-
-body {
-    color-scheme: light only !important;
-    background-color: #565b4b !important;
-}
-
-/* Empêche le navigateur de modifier les couleurs des formulaires */
-input,
-select,
-textarea,
-button {
-    color-scheme: light only !important;
-}
-
-/* Force les couleurs originales */
-.rsvp-input {
-    background-color: #FAF1E1 !important;
-    color: #565B4A !important;
-}
-
-.rsvp-input::placeholder {
-    color: #565B4A !important;
-    opacity: 0.6 !important;
-}
-
-.rsvp-submit {
-    background-color: #D6BD8C !important;
-    color: #565B4A !important;
-}
-
-select option {
-    background-color: #FAF1E1 !important;
-    color: #565B4A !important;
-}
 </style>
 </head>
 
 <body class="locked">
 
-<!-- ===================== VIDEO ENVELOPE SCREEN ===================== -->
 <div id="envelope-screen">
   <video id="envelope-video" src="assets/envelope-animation.mp4" poster="assets/envelope-poster.jpg" muted playsinline preload="auto"></video>
   <div class="tap-hint">Touchez pour ouvrir</div>
@@ -545,129 +492,59 @@ select option {
 
 <audio id="bg-song" src="assets/chanson.mp3" preload="auto" loop></audio>
 
-<!-- ===================== PAGE 1 : HERO / STATIC REVEAL ===================== -->
 <section id="hero">
   <div class="scroll-cue">↓ Faites défiler ↓</div>
 </section>
     
-<!-- ===================== PAGE 2 : PETITES ATTENTIONS ===================== -->
-
 <section id="notes-page">
-
     <div class="notes-content">
-
-        <h2 class="notes-main-title">
-            Quelques petites attentions
-        </h2>
-
-
-        <!-- PHOTOS -->
-
+        <h2 class="notes-main-title">Quelques petites attentions</h2>
         <div class="note-block">
-
             <img class="note-icon" src="assets/icon-camera.png" alt="">
-
-            <h3 class="note-title">
-                Les photos et vidéos sont interdites !
-            </h3>
-
-            <p class="note-text">
-                Afin de profiter pleinement de chaque instant à nos côtés,
-                nous vous invitons à déposer vos téléphones
-                et à laisser notre photographe immortaliser
-                ces précieux moments.
-            </p>
-
-            <p class="note-text note-highlight">
-                Merci de vivre cette journée avec nous pleinement.
-            </p>
-
+            <h3 class="note-title">Les photos et vidéos sont interdites !</h3>
+            <p class="note-text">Afin de profiter pleinement de chaque instant à nos côtés, nous vous invitons à déposer vos téléphones et à laisser notre photographe immortaliser ces précieux moments.</p>
+            <p class="note-text note-highlight">Merci de vivre cette journée avec nous pleinement.</p>
         </div>
-
-
-        <!-- SEPARATION -->
-
         <div class="note-divider"></div>
-
-
-        <!-- ENFANTS -->
-
         <div class="note-block">
-
             <img class="note-icon" src="assets/icon-enfants.png" alt="">
-
-            <h3 class="note-title">
-              Et pour les enfants…
-            </h3>
-
-            <p class="note-text">
-                Afin que chacun puisse profiter de cette belle journée,
-                se reposer, danser et prendre du plaisir,
-                la direction a décidé que cette journée se fera sans enfants.
-            </p>
-
-            <p class="note-text note-highlight">
-                Merci de votre compréhension !
-            </p>
-
+            <h3 class="note-title">Et pour les enfants…</h3>
+            <p class="note-text">Afin que chacun puisse profiter de cette belle journée, se reposer, danser et prendre du plaisir, la direction a décidé que cette journée se fera sans enfants.</p>
+            <p class="note-text note-highlight">Merci de votre compréhension !</p>
         </div>
-
     </div>
-
 </section>
     
-<!-- ===================== PAGE COUNTDOWN ===================== -->
 <div class="countdown-inline">
   <p class="countdown-message">Il ne reste plus que...</p>
   <div class="countdown-grid">
-    <div class="countdown-item">
-      <span class="countdown-number" id="cd-days">00</span>
-      <span class="countdown-label">Jours</span>
-    </div>
-    <div class="countdown-item">
-      <span class="countdown-number" id="cd-hours">00</span>
-      <span class="countdown-label">Heures</span>
-    </div>
-    <div class="countdown-item">
-      <span class="countdown-number" id="cd-minutes">00</span>
-      <span class="countdown-label">Minutes</span>
-    </div>
-    <div class="countdown-item">
-      <span class="countdown-number" id="cd-seconds">00</span>
-      <span class="countdown-label">Secondes</span>
-    </div>
+    <div class="countdown-item"><span class="countdown-number" id="cd-days">00</span><span class="countdown-label">Jours</span></div>
+    <div class="countdown-item"><span class="countdown-number" id="cd-hours">00</span><span class="countdown-label">Heures</span></div>
+    <div class="countdown-item"><span class="countdown-number" id="cd-minutes">00</span><span class="countdown-label">Minutes</span></div>
+    <div class="countdown-item"><span class="countdown-number" id="cd-seconds">00</span><span class="countdown-label">Secondes</span></div>
   </div>
 </div>
-<!-- ===================== RSVP ===================== -->
+
 <section id="rsvp-page">
   <div class="rsvp-content">
     <p class="rsvp-title">Confirmez votre présence</p>
-
     <form id="rsvp-form" class="rsvp-form">
       <input type="hidden" name="access_key" value="a410c796-bbb1-4490-9a4c-d6ddf227d596">
       <input type="hidden" name="subject" value="Nouvelle réponse RSVP — Mariage Melissa & Badr Eddine">
-
       <input type="text" name="Nom" placeholder="Votre nom complet" required class="rsvp-input">
-
       <select name="Présence" required class="rsvp-input">
         <option value="" disabled selected>Serez-vous présent(e) ?</option>
         <option value="Oui, avec plaisir">Oui, avec plaisir</option>
         <option value="Non, je ne pourrai pas venir">Non, je ne pourrai pas venir</option>
       </select>
-
       <button type="submit" class="rsvp-submit">Envoyer ma réponse</button>
     </form>
-
-    <p id="rsvp-success" class="rsvp-success" style="display:none;">
-      Merci ! Votre réponse a bien été envoyée. ✓
-    </p>
+    <p id="rsvp-success" class="rsvp-success" style="display:none;">Merci ! Votre réponse a bien été envoyée. ✓</p>
   </div>
 </section>
 
-    <!-- ===================== PAGE 3 : MAP CARD ===================== -->
 <section id="map-page">
   <div class="map-card">
-
     <div class="map-text">
       <p class="map-title">Retrouvez-nous</p>
       <p class="map-venue">Salle Hamza</p>
@@ -677,83 +554,103 @@ select option {
       </div>
       <a class="maps-link" href="https://maps.app.goo.gl/XSvzecsYN35hYMBC9" target="_blank" rel="noopener"> Cliquez pour ouvrir Maps</a>
     </div>
-
     <div class="map-image">
       <img src="assets/map-graphic.png" alt="Plan d'accès">
     </div>
-
   </div>
 </section>
 
-<!-- ===================== downcounter ===================== -->
 <script>
   const video = document.getElementById('envelope-video');
   const envScreen = document.getElementById('envelope-screen');
   const song = document.getElementById('bg-song');
   const body = document.body;
   let hasOpened = false;
+  let fallbackTimer = null;
+
+  function openHero(){
+    if (envScreen.classList.contains('hidden')) return;
+    clearTimeout(fallbackTimer);
+    envScreen.classList.add('hidden');
+    body.classList.remove('locked');
+    document.getElementById('hero').scrollIntoView({behavior:'auto'});
+  }
 
   video.addEventListener('loadeddata', () => {
     video.currentTime = 0;
     video.pause();
   });
 
-  envScreen.addEventListener('click', () => {
+  function handleEnvelopeTap(e){
     if(hasOpened) return;
     hasOpened = true;
+    if (e.type === 'touchend') e.preventDefault();
     envScreen.classList.add('playing');
-    video.play();
-    song.play().catch(() => {});
-  });
+    video.muted = true;
 
-  video.addEventListener('ended', () => {
-    envScreen.classList.add('hidden');
-    body.classList.remove('locked');
-    document.getElementById('hero').scrollIntoView({behavior:'auto'});
-  });
-
-    const countdownTarget = new Date("2026-12-12T14:00:00+01:00").getTime();
-function updateCountdown(){
-  const now = Date.now();
-  const diff = countdownTarget - now;
-  if (diff <= 0){
-    document.getElementById('cd-days').textContent = '00';
-    document.getElementById('cd-hours').textContent = '00';
-    document.getElementById('cd-minutes').textContent = '00';
-    document.getElementById('cd-seconds').textContent = '00';
-    return;
-  }
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / (1000 * 60)) % 60);
-  const seconds = Math.floor((diff / 1000) % 60);
-  document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
-  document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
-  document.getElementById('cd-minutes').textContent = String(minutes).padStart(2, '0');
-  document.getElementById('cd-seconds').textContent = String(seconds).padStart(2, '0');
-}
-updateCountdown();
-setInterval(updateCountdown, 1000);
-
-const rsvpForm = document.getElementById('rsvp-form');
-rsvpForm.addEventListener('submit', function(e){
-  e.preventDefault();
-  const formData = new FormData(rsvpForm);
-  fetch('https://api.web3forms.com/submit', {
-    method: 'POST',
-    body: formData
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.success){
-      rsvpForm.style.display = 'none';
-      document.getElementById('rsvp-success').style.display = 'block';
-    } else {
-      alert('Une erreur est survenue, merci de réessayer.');
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => {
+        // Autoplay was blocked or failed — don't leave the user stuck on the envelope
+        openHero();
+      });
     }
-  })
-  .catch(() => alert('Une erreur est survenue, merci de réessayer.'));
-});
+
+    song.play().catch(() => {});
+
+    // Safety net: if the video stalls or 'ended' never fires for any reason,
+    // reveal the invitation anyway after a short wait rather than trapping the user.
+    fallbackTimer = setTimeout(openHero, 8000);
+  }
+
+  envScreen.addEventListener('touchend', handleEnvelopeTap, { passive: false });
+  envScreen.addEventListener('click', handleEnvelopeTap);
+
+  video.addEventListener('ended', openHero);
+  video.addEventListener('error', openHero);
+
+  const countdownTarget = new Date("2026-12-12T14:00:00+01:00").getTime();
+  function updateCountdown(){
+    const now = Date.now();
+    const diff = countdownTarget - now;
+    if (diff <= 0){
+      document.getElementById('cd-days').textContent = '00';
+      document.getElementById('cd-hours').textContent = '00';
+      document.getElementById('cd-minutes').textContent = '00';
+      document.getElementById('cd-seconds').textContent = '00';
+      return;
+    }
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+    document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('cd-minutes').textContent = String(minutes).padStart(2, '0');
+    document.getElementById('cd-seconds').textContent = String(seconds).padStart(2, '0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  const rsvpForm = document.getElementById('rsvp-form');
+  rsvpForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const formData = new FormData(rsvpForm);
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success){
+        rsvpForm.style.display = 'none';
+        document.getElementById('rsvp-success').style.display = 'block';
+      } else {
+        alert('Une erreur est survenue, merci de réessayer.');
+      }
+    })
+    .catch(() => alert('Une erreur est survenue, merci de réessayer.'));
+  });
 </script>
 
 </body>
