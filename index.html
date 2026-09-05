@@ -153,7 +153,7 @@
         position:relative;
         width:100%;
         height:100dvh;
-        background:#565b4b url('assets/invite-reveal.jpg') center/cover no-repeat;
+        background:#565b4b url('assets/invite-reveal-ios.jpg') center/cover no-repeat;
     }
 .scroll-cue{
     position:absolute;
@@ -498,6 +498,30 @@ textarea.rsvp-input{ resize:none; font-family:'Montserrat', sans-serif; }
         margin: 50px auto;
     }
 }
+
+    .section-divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    width:100%;
+    max-width:260px;
+    margin:40px auto;
+}
+.section-divider .divider-line{
+    flex:1;
+    height:1px;
+    background:currentColor;
+    opacity:0.35;
+}
+.section-divider .divider-ornament{
+    font-size:13px;
+    line-height:1;
+    color:currentColor;
+    opacity:0.85;
+}
+.section-divider.on-dark{ color:#D6BD8C; }
+.section-divider.on-light{ color:#565B4A; }
 /* ================= FORCE LIGHT MODE ================= */
 html {
     color-scheme: light only !important;
@@ -590,9 +614,9 @@ select option {
             <img class="note-icon" src="assets/icon-camera.png" alt="">
             <h3 class="note-title">Les photos et vidéos sont interdites !</h3>
             <p class="note-text">Afin de profiter pleinement de chaque instant à nos côtés, nous vous invitons à déposer vos téléphones et à laisser notre photographe immortaliser ces précieux moments.</p>
-            <p class="note-text note-highlight">Merci de vivre cette journée avec nous pleinement.</p>
+            <p class="note-text note-highlight">Merci de vivre cette journée pleinement avec nous.</p>
         </div>
-        <div class="note-divider"></div>
+        
         <div class="note-block">
             <img class="note-icon" src="assets/icon-enfants.png" alt="">
             <h3 class="note-title">Et pour les enfants…</h3>
@@ -601,6 +625,12 @@ select option {
         </div>
     </div>
 </section>
+    
+<div class="section-divider on-light">
+  <span class="divider-line"></span>
+  <span class="divider-ornament">✦</span>
+  <span class="divider-line"></span>
+</div>
     
 <div class="countdown-inline">
   <p class="countdown-message">Il ne reste plus que...</p>
@@ -611,7 +641,13 @@ select option {
     <div class="countdown-item"><span class="countdown-number" id="cd-seconds">00</span><span class="countdown-label">Secondes</span></div>
   </div>
 </div>
-
+    
+<div class="section-divider on-light">
+  <span class="divider-line"></span>
+  <span class="divider-ornament">✦</span>
+  <span class="divider-line"></span>
+</div>
+    
 <section id="rsvp-page">
   <div class="rsvp-content">
     <p class="rsvp-title">Confirmez votre présence</p>
@@ -624,7 +660,7 @@ select option {
         <option value="Oui, avec plaisir">Oui, avec plaisir</option>
         <option value="Non, je ne pourrai pas venir">Non, je ne pourrai pas venir</option>
       </select>
-        <textarea name="Message" placeholder="Un petit mot pour les mariés (facultatif)" rows="3" class="rsvp-input"></textarea>
+        <textarea name="Message" placeholder="Un petit mot/ une note  (facultatif)" rows="3" class="rsvp-input"></textarea>
 
       <button type="submit" class="rsvp-submit">Envoyer ma réponse</button>
     </form>
@@ -632,6 +668,12 @@ select option {
   </div>
 </section>
 
+<div class="section-divider on-light">
+  <span class="divider-line"></span>
+  <span class="divider-ornament">✦</span>
+  <span class="divider-line"></span>
+</div>
+    
 <section id="map-page">
   <div class="map-card">
     <div class="map-text">
