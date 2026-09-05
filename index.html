@@ -304,14 +304,13 @@
 
     /* ================= PAGE 3 : PETITES ATTENTIONS ================= */
 #rsvp-page{
-    min-height:100dvh;
     width:100%;
-    background:#565b4b;
-    color:#FAF1E1;
+    background:#FAF1E1;
+    color:#565B4A;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:70px 30px;
+    padding:45px 30px;
 }
 .rsvp-content{
     width:100%;
@@ -322,7 +321,7 @@
     font-family:'Cormorant Garamond', serif;
     font-weight:600;
     font-size:32px;
-    margin-bottom:10px;
+    margin-bottom:22px;
 }
 .rsvp-form{
     display:flex;
@@ -334,8 +333,8 @@
     font-family:'Montserrat', sans-serif;
     font-size:15px;
     color:#565B4A;
-    background:#FAF1E1;
-    border:none;
+    background:#FFFFFF;
+    border:1px solid rgba(86,91,74,0.3);
     border-radius:10px;
     padding:14px 16px;
     outline:none;
@@ -347,23 +346,24 @@ textarea.rsvp-input{ resize:none; font-family:'Montserrat', sans-serif; }
     font-weight:500;
     font-size:15px;
     letter-spacing:0.03em;
-    color:#565b4b;
-    background:#D6BD8C;
+    color:#FAF1E1;
+    background:#565B4A;
     border:none;
     border-radius:999px;
     padding:14px;
     margin-top:6px;
     cursor:pointer;
     transition:transform 0.15s ease, box-shadow 0.15s ease;
-    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+    box-shadow:0 8px 20px rgba(86,91,74,0.3);
 }
 .rsvp-submit:active{
     transform:translateY(2px) scale(0.98);
 }
 .rsvp-success{
     font-family:'Cormorant Garamond', serif;
+    font-weight:600;
     font-size:20px;
-    color:#D6BD8C;
+    color:#565B4A;
     margin-top:20px;
 }
 #notes-page {
@@ -479,6 +479,39 @@ textarea.rsvp-input{ resize:none; font-family:'Montserrat', sans-serif; }
     .note-divider {
         margin: 50px auto;
     }
+}
+/* ================= FORCE LIGHT MODE ================= */
+html {
+    color-scheme: light only !important;
+    background-color: #565b4b !important;
+}
+body {
+    color-scheme: light only !important;
+    background-color: #565b4b !important;
+}
+/* Empêche le navigateur de modifier les couleurs des formulaires */
+input,
+select,
+textarea,
+button {
+    color-scheme: light only !important;
+}
+/* Force les couleurs originales */
+.rsvp-input {
+    background-color: #FAF1E1 !important;
+    color: #565B4A !important;
+}
+.rsvp-input::placeholder {
+    color: #565B4A !important;
+    opacity: 0.6 !important;
+}
+.rsvp-submit {
+    background-color: #D6BD8C !important;
+    color: #565B4A !important;
+}
+select option {
+    background-color: #FAF1E1 !important;
+    color: #565B4A !important;
 }
 </style>
 </head>
