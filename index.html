@@ -500,15 +500,24 @@ textarea.rsvp-input{ resize:none; font-family:'Montserrat', sans-serif; }
 }
 
 .section-divider {
-    width: 70px;
-    height: 1px;
-    background-color: #565B4A;
-    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 180px;
+    margin: 30px auto;
+    color: #565B4A;
 }
 
-.section-divider-space {
-    background-color: #FAF1E1;
-    padding: 30px 0;
+.section-divider span:not(.divider-star) {
+    flex: 1;
+    height: 1px;
+    background-color: #565B4A;
+}
+
+.divider-star {
+    font-size: 12px;
+    line-height: 1;
 }
 
 /* ================= FORCE LIGHT MODE ================= */
@@ -615,7 +624,11 @@ select option {
     </div>
 </section>
     
-<div class="section-divider-space">     <div class="section-divider"></div> </div>
+<div class="section-divider">
+    <span></span>
+    <span class="divider-star">✦</span>
+    <span></span>
+</div>
     
 <div class="countdown-inline">
   <p class="countdown-message">Il ne reste plus que...</p>
@@ -627,7 +640,11 @@ select option {
   </div>
 </div>
     
-<div class="section-divider-space">     <div class="section-divider"></div> </div>
+<div class="section-divider">
+    <span></span>
+    <span class="divider-star">✦</span>
+    <span></span>
+</div>
     
 <section id="rsvp-page">
   <div class="rsvp-content">
@@ -649,7 +666,11 @@ select option {
   </div>
 </section>
 
-<div class="section-divider-space">     <div class="section-divider"></div> </div>
+<div class="section-divider">
+    <span></span>
+    <span class="divider-star">✦</span>
+    <span></span>
+</div>
     
 <section id="map-page">
   <div class="map-card">
