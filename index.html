@@ -499,26 +499,33 @@ textarea.rsvp-input{ resize:none; font-family:'Montserrat', sans-serif; }
     }
 }
 
+  /* ================= divider ================= */  
+.section-divider-space {
+    width: 100%;
+    background-color: #FAF1E1;
+    padding: 30px 0;
+}
+
 .section-divider {
     display: flex;
     align-items: center;
     gap: 10px;
-    width: 100%;
-    max-width: 180px;
-    margin: 30px auto;
-    color: #565B4A;
-    background-color: #FAF1E1;
+    width: 70%;
+    max-width: 300px;
+    margin: 0 auto;
 }
 
-.section-divider span:not(.divider-star) {
+.section-divider::before,
+.section-divider::after {
+    content: "";
     flex: 1;
     height: 1px;
-    background-color: #FAF1E1;
+    background-color: #565B4A;
 }
 
 .divider-star {
+    color: #565B4A;
     font-size: 12px;
-    line-height: 1;
 }
 
 /* ================= FORCE LIGHT MODE ================= */
