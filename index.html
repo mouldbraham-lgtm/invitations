@@ -722,7 +722,17 @@ select.rsvp-input option {
     song.muted = !song.muted;
     musicToggle.classList.toggle('is-muted', song.muted);
   });
+      document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      song.pause();
+    } else if (hasOpened && !song.muted) {
+      song.play().catch(() => {});
+    }
+  });
 
+  window.addEventListener('pagehide', () => {
+    song.pause();
+  });
   video.setAttribute('playsinline', '');
   video.setAttribute('webkit-playsinline', '');
   video.load();
