@@ -42,7 +42,6 @@
     html, body {
         width: 100%;
         min-height: 100%;
-        color-scheme: light only;
     }
 
     html{ scroll-behavior: smooth; }
@@ -526,44 +525,52 @@ textarea.rsvp-input{ resize:none; font-family:'Montserrat', sans-serif; }
 }
 
 /* ================= FORCE LIGHT MODE ================= */
-html {
-    color-scheme: light only !important;
-    background-color: #565b4b !important;
-}
+
+html,
 body {
-    color-scheme: light only !important;
-    background-color: #565b4b !important;
+    color-scheme: only light !important;
+    forced-color-adjust: none !important;
 }
-/* Empêche le navigateur de modifier les couleurs des formulaires */
+
+/* Prevent mobile browsers from modifying form controls */
 input,
 select,
 textarea,
 button {
     color-scheme: only light !important;
+    forced-color-adjust: none !important;
     -webkit-appearance: none;
     appearance: none;
-    forced-color-adjust: none !important;
 }
-    
-/* Force les couleurs originales */
 
-select option {
-    background-color: #FAF1E1 !important;
-    color: #565B4A !important;
-}
-    
+/* ================= RSVP ================= */
 .rsvp-input {
     background-color: #FAF1E1 !important;
     color: #565B4A !important;
 }
+
 .rsvp-input::placeholder {
     color: #565B4A !important;
     opacity: 0.6 !important;
 }
+
+/* Select menu */
+select.rsvp-input {
+    background-color: #FAF1E1 !important;
+    color: #565B4A !important;
+}
+
+select.rsvp-input option {
+    background-color: #FAF1E1 !important;
+    color: #565B4A !important;
+}
+
+/* Submit button */
 .rsvp-submit {
     background-color: #D6BD8C !important;
     color: #565B4A !important;
 }
+    
 /* ================= MUSIC TOGGLE ================= */
 .music-toggle{
     position:fixed;
